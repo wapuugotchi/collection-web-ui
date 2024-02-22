@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
 import {useEffect, useState} from "react";
 import ItemList from "@/components/item_list";
-import {Config, Item} from "@/pages/types";
+import {Config} from "@/pages/types";
 
 export default function Home() {
 
