@@ -1,4 +1,4 @@
-import {Collection, Item} from "@/pages/types";
+import {Collection, Item} from "@/lib/types";
 
 export default function ItemList(collection: Collection) {
 

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {useEffect, useState} from "react";
 import ItemList from "@/components/item_list";
-import {Config} from "@/pages/types";
+import {Config} from "@/lib/types";
 
 export default function Home() {
 
