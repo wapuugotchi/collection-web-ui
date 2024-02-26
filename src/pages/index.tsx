@@ -58,7 +58,12 @@ export default function Home() {
                 </ul>
             </div>
             <div className="w-full h-12 bg-gray-800 flex flex-row justify-between py-1 px-5 z-20 fixed">
-                <h1 className="text-2xl font-bold text-white text-center">WapuuGotchi Collection</h1>
+                <div className="flex flex-row gap-2">
+                    <img src="/logo.svg" className="h-8 w-8 py-2"/>
+                    <h1 className="text-2xl font-bold text-white text-center">
+                        WapuuGotchi Collection
+                    </h1>
+                </div>
                 <ul className="flex-row gap-3 pr-5 hidden md:flex">
                     {
                         collections.map((collection) => {
