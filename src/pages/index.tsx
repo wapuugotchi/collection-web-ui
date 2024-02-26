@@ -6,12 +6,12 @@ export default function Home() {
 
     const [config, setConfig] = useState({} as Config);
     const [collections, setCollections] = useState([] as string[]);
+    const [mobileMenu, setMobileMenu] = useState(false);
 
     useEffect(() => {
         fetch("https://api.wapuugotchi.com/collection")
             .then(value => value.json()).then(value => {
             setConfig(value as Config)
-            console.log(config)
             let collections = [];
             for (let index in config.collections) {
                 collections.push(config.collections[index].caption)
@@ -25,6 +25,7 @@ export default function Home() {
     }
 
     function scrollTo(collection: Collection) {
+        setMobileMenu(false);
         let element = document.getElementById(collection.caption.toLowerCase() + "_header");
         if (element) {
             element.scrollIntoView({behavior: "smooth", inline: "center", block: "center"});
@@ -42,9 +43,23 @@ export default function Home() {
 
     return (
         <div className="w-full h-full bg-gray-100" key={"home_page"}>
+            <div className={mobileMenu ? "bg-gray-800 w-full h-full fixed z-10" : "hidden"} key={"mobile_menu"}>
+                <ul className="flex flex-col gap-3 pt-12 px-5">
+                    {
+                        collections.map((collection) => {
+                            return (
+                                <li key={getCollection(collection).caption}>
+                                    <a className={isInView(getCollection(collection)) ? "nav-item active" : "nav-item"}
+                                       onClick={ event => scrollTo(getCollection(collection))}>{getCollection(collection).caption }</a>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
             <div className="w-full h-12 bg-gray-800 flex flex-row justify-between py-1 px-5 z-20 fixed">
-                <h1 className="text-2xl font-bold text-white">WapuuGotchi Collection</h1>
-                <ul className="flex flex-row gap-3 pr-5 sm:hidden md:flex">
+                <h1 className="text-2xl font-bold text-white text-center">WapuuGotchi Collection</h1>
+                <ul className="flex-row gap-3 pr-5 hidden md:flex">
                     {
                         collections.map((collection) => {
                             return (
@@ -56,6 +71,18 @@ export default function Home() {
                         })
                     }
                 </ul>
+                <a className="block md:hidden text-white py-2" onClick={ event => setMobileMenu(!mobileMenu)}>
+                    {
+                        mobileMenu ?
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                        :
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                        </svg>
+                    }
+                </a>
             </div>
             <div className="py-12">
                 {

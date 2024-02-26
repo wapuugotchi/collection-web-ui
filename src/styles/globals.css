@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+root {
+    @apply w-full h-full bg-gray-100;
+}
+
 ::-webkit-scrollbar{
     display: none;
 }
