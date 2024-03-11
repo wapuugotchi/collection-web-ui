@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <div className="w-full h-12 bg-gray-800 flex flex-row justify-between py-1 px-5 z-20 fixed">
                 <div className="flex flex-row gap-2">
-                    <Image src="/images/logo.svg" alt="WapuuGotchi Logo" className="h-8 w-8 py-2"/>
+                    <img src="https://api.wapuugotchi.com/assets/logo.svg" alt="WapuuGotchi Logo" className="h-8 w-8 py-2"/>
                     <h1 className="text-2xl font-bold text-white text-center">
                         WapuuGotchi Collection
                     </h1>
