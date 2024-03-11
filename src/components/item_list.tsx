@@ -1,5 +1,4 @@
 import {Collection, Item} from "@/lib/types";
-import Image from "next/image";
 
 export default function ItemList(collection: Collection) {
 
@@ -64,7 +63,7 @@ export default function ItemList(collection: Collection) {
 
     return (
         <div className="w-full text-center py-10" id={ collection.caption.toLowerCase() }>
-            <h1 className="text-3xl font-bold" id={ collection.caption.toLowerCase() + "_header" }>{collection.caption}</h1>
+            <h1 className="text-3xl font-bold dark:text-white text-black" id={ collection.caption.toLowerCase() + "_header" }>{collection.caption}</h1>
             <div className="py-3 px-4 lg:px-12 flex flex-wrap justify-center" key={ collection.caption.toLowerCase() }>
                 {getItems().map((value) => {
                     return buildItem(value)

@@ -42,8 +42,8 @@ export default function Home() {
     }
 
     return (
-        <div className="w-full h-full bg-gray-100" key={"home_page"}>
-            <div className={mobileMenu ? "bg-gray-800 w-full h-full fixed z-10" : "hidden"} key={"mobile_menu"}>
+        <div className="w-screen h-full bg-gray-100 dark:bg-gray-700" key={"home_page"}>
+            <div className={mobileMenu ? "bg-gray-800 w-screen h-full fixed z-20 translate-x-0 transition-all duration-150 ease-in-out md:-translate-x-full" : "bg-gray-800 w-screen h-full fixed z-10 -translate-x-full transition-all duration-150 ease-in-out"} key={"mobile_menu"}>
                 <ul className="flex flex-col gap-3 pt-12 px-5">
                     {
                         collections.map((collection) => {
@@ -89,7 +89,7 @@ export default function Home() {
                     }
                 </a>
             </div>
-            <div className="py-12">
+            <div className="py-12 z-0">
                 {
                     collections.map((value) => {
                         return ItemList(getCollection(value))
